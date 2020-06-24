@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
-function RenderDish({dish}) {
+function RenderDish(dish) {
         return (
           <Card>
             <CardImg top src={dish.image} alt={dish.name} />
@@ -55,4 +55,4 @@ function RenderDish({dish}) {
       }
     
     
-    export default DishDetail;
+    export default RenderDish;
