@@ -29,7 +29,7 @@ toggleModal() {
 }
 
   handleSubmit(values) {
-    this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+    this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
   render() {
@@ -120,7 +120,7 @@ function RenderDish({dish}) {
         );
       }
       
-     function RenderComments({comments, addComment, dishId}) {
+     function RenderComments({comments, postComment, dishId}) {
         if (comments == null || comments.length === 0) {
           return <div></div>;
         }
@@ -140,7 +140,7 @@ function RenderDish({dish}) {
           <div>
             <h4>Comments</h4>
             <ul className="list-unstyled">{RComments}</ul>
-            <Commentform dishId={dishId} addComment={addComment} />
+            <Commentform dishId={dishId} postComment={postComment} />
           </div>
         );
       }
@@ -182,7 +182,7 @@ function RenderDish({dish}) {
               </div>
               <div className="col-12 col-md-5 m-1">
                 <RenderComments comments={props.comments}
-                 addComment={props.addComment}
+                 postComment={props.postComment}
                  dishId={props.dish.id}
                 />
               </div>
