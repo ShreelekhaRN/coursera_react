@@ -2,6 +2,9 @@ import React from 'react';
 import Commentform from './CommentformComponent';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
+import { Fade, Stagger } from 'react-animation-components';
+
 
 
 function RenderLeader ({leader}) {
@@ -9,7 +12,7 @@ function RenderLeader ({leader}) {
         <div key={leader.id} className="col-12 mt-5">
           <Media tag="li">
             <Media left middle>
-               <Media object src={leader.image} alt={leader.name} />
+            <Media object src={baseUrl + leader.image} alt={leader.name} />
             </Media>
            <Media body className="ml-5">
             <Media heading>{leader.name}</Media>
@@ -21,17 +24,16 @@ function RenderLeader ({leader}) {
     );
 }
 
-function About(props) {
-
-    const leaders = props.leaders.map((leader) => {
+const About = (props) => {
+    const leaders = <Stagger in>
+    {props.leaders.leaders.map((leader) => {
         return (
-            <div className="row" key={leader.id}>
-                <Media list>
-                    <RenderLeader leader={leader} />
-                </Media>
-            </div>
-        );
-    });
+            <Fade in key={leader.id}>
+            <RenderLeader key={leader.id} leader={leader} />
+          </Fade>
+      );
+    })}
+  </Stagger>;
 
     return(
         <div className="container">

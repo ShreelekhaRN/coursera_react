@@ -13,7 +13,7 @@ const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val
 class Contact extends Component {
     constructor(props) {
         super(props);
-        this.handleSubmit= this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this); 
 
     }          
 
@@ -25,7 +25,7 @@ class Contact extends Component {
       
     handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        this.props.postFeedback(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message);
         // event.preventDefault();
         this.props.resetFeedbackForm();
     }

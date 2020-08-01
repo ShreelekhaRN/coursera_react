@@ -127,31 +127,30 @@ function RenderDish({dish}) {
         );
       }
       
-     function RenderComments({comments, postComment, dishId}) {
+      function RenderComments({comments, addComment, dishId}) {
         if (comments == null || comments.length === 0) {
           return <div></div>;
         }
         const RComments = 
-    <Stagger in>
-      {comments.map((comment) => {
-      return (
-        <Fade in>
-        <li>
-          <p>{comment.comment}</p>
-          <p>
-            -- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
-          </p>
-        </li>
-        </Fade>
-      );
-    })}
-    </Stagger>;
-    
+        <Stagger in>
+          {comments.map((comment) => {
+          return (
+            <Fade in>
+            <li>
+              <p>{comment.comment}</p>
+              <p>
+                -- {comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
+              </p>
+            </li>
+            </Fade>
+          );
+        })}
+        </Stagger>;
         return (
           <div>
             <h4>Comments</h4>
             <ul className="list-unstyled">{RComments}</ul>
-            <Commentform dishId={dishId} postComment={postComment} />
+            <Commentform dishId={dishId} addComment={addComment} />
           </div>
         );
       }
